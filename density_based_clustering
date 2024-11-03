@@ -1,0 +1,46 @@
+# load required libraries for analysis of Last 30 Days Earthquakes in Oklahoma
+
+install.packages(c("sp","dplyr", "lubridate", "rlang", "utils", "factoextra", "cluster", "fpc", "plyr"))
+
+
+library(sp)
+library(dplyr)
+library(lubridate)
+suppressWarnings(library(rlang))
+library(utils)
+library(factoextra)
+library(cluster) # finding groups in data
+library(fpc) # Flexible Procedures for Clustering
+library(plyr) # A grammer of Data Manipulation
+library()
+
+# load OGS Catalog Data
+
+FromDate <- format(seq(Sys.time(),by = "-31 days", length.out = 2)[2], "%Y%m%d2359")
+
+ToDate <- format(seq(Sys.time(),by = "1 days", length.out = 2)[2], "%Y%m%d2359")
+
+Mag<-0.5
+
+url <- paste0("https://ogsweb.ou.edu/api/earthquake?start=", FromDate, "&end=", ToDate, "&mag=", Mag, "&format=csv")
+
+ogs <- read.csv(url)
+
+ogs_clust <- data.frame(ogs$latitude, ogs$longitude)
+
+# density-based clustering
+set.seed(2)
+Dbscan_cl <- dbscan(ogs_clust, eps = 0.05, MinPts = 5)
+Dbscan_cl
+
+ogs$clustid <- Dbscan_cl$cluster
+
+ogs$origintime <- as.POSIXct(ogs$origintime, origin = "1900-01-01 00:00:00", format = '%Y-%m-%d %H:%M:%S')
+
+# Assuming `ogs` has longitude and latitude columns
+coordinates(ogs) <- ~longitude + latitude
+
+# Set the Coordinate Reference System (CRS) to WGS84 (EPSG:4326)
+proj4string(ogs) <- CRS("+proj=longlat +datum=WGS84 +no_defs")
+
+

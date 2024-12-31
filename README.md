@@ -15,4 +15,4 @@
 
 Compilation of cluster methods used in geolytics workflows including: KMeans, Hierarchical, DBSCAN, etc.
 
-# Soccer Analysis; ## About the Project; ###### Credits:
+# Soccer Analysis ## About the Project ### Credits:

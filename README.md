@@ -14,3 +14,5 @@
 #### -What the intended use is
 
 #### Compilation of cluster methods used in geolytics workflows including: KMeans, Hierarchical, DBSCAN, etc.
+
+![La Liga logo](https://assets.laliga.com/assets/logos/laliga-v/laliga-v-300x300.jpg)

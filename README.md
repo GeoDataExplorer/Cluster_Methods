@@ -1,16 +1,16 @@
 # Cluster_Methods
 ## Description of technology: R coding language
-####-Why?
+#### -Why?
 ## Description of the process
-####-Why?
+#### -Why?
 ## Table of contents
 
 # README Extras
-####-How the project came about
-####-The motivation
-####-Limitations
-####-Challenges
-####-What problem it hopes to solve
-####-What the intended use is
+#### -How the project came about
+#### -The motivation
+#### -Limitations
+#### -Challenges
+#### -What problem it hopes to solve
+#### -What the intended use is
 
 #### Compilation of cluster methods used in geolytics workflows including: KMeans, Hierarchical, DBSCAN, etc.
